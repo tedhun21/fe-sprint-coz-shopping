@@ -1,6 +1,8 @@
+import { useState } from "react";
 import "./Header.css";
 
 const Header = () => {
+  const [isNavOpen, setIsNavOpen] = useState(false);
   return (
     <header className="header-container">
       <div className="header-logo">
@@ -8,10 +10,24 @@ const Header = () => {
         <span className="logo-name">COZ Shopping</span>
       </div>
       <img
+        onClick={() => setIsNavOpen(!isNavOpen)}
         className="hamburger"
         src="/images/hamburger.png"
         alt="hamburger menu"
       />
+      {isNavOpen ? (
+        <div className="gnb">
+          <div className="nav-hi">OOO님, 안녕하세요!</div>
+          <div className="nav-item">
+            <img src="/images/gift.png" />
+            <span>상품리스트 페이지</span>
+          </div>
+          <div className="nav-bookmark">
+            <img src="/images/star.png" />
+            <span>북마크 페이지</span>
+          </div>
+        </div>
+      ) : null}
     </header>
   );
 };
