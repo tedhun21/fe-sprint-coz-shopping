@@ -1,5 +1,5 @@
 {
-  "name": "hi",
+  "name": "fe-sprint-coz-shopping",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -30,5 +30,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^8.44.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-react-hooks": "^4.6.0"
   }
 }
