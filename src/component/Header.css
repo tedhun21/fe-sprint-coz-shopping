@@ -4,6 +4,7 @@
   align-items: center;
   position: sticky;
 
+  min-width: 1280px;
   height: 80px;
   background: #fff;
   padding: 0 76px;
@@ -11,17 +12,15 @@
 }
 
 .header-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
   cursor: pointer;
   img {
     width: 55px;
     height: 30px;
   }
-}
-
-span.logo-name {
-  font-size: 34px;
-  font-weight: 700;
-  padding-left: 12px;
 }
 
 img.hamburger {
@@ -73,10 +72,4 @@ img.hamburger {
   border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
   padding: 20px;
   gap: 10px;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-  cursor: pointer;
 }
