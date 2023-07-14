@@ -1,12 +1,18 @@
+import { useState } from "react";
 import "./ProductItem.css";
 
 const ProductItem = ({ product }) => {
-  console.log(product);
+  const [isMarked, setIsMarked] = useState(false);
+
   return (
     <div>
       <img
         className="product-img"
         src={product.image_url || product.brand_image_url}
+      />
+      <img
+        src={isMarked ? "/images/on.png" : "/images/off.png"}
+        onClick={() => setIsMarked(!isMarked)}
       />
       <div className="product-label">
         <h3>

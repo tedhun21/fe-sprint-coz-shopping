@@ -16,10 +16,9 @@ const Home = () => {
       <div className="product-container">
         <h2>상품리스트</h2>
         <div className="product-items">
-          {products.map((product) => {
-            console.log(product);
-            return <ProductItem key={product.id} product={product} />;
-          })}
+          {products.map((product) => (
+            <ProductItem key={product.id} product={product} />
+          ))}
         </div>
       </div>
       <div>
