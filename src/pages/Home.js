@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useSelector } from "react-redux";
+
 import ProductItem from "../component/ProductItem";
 import "./Home.css";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
+  const markedData = useSelector((state) => state.markedData.data);
+
+  console.log(markedData);
 
   useEffect(() => {
     axios
@@ -12,7 +17,7 @@ const Home = () => {
       .then((res) => setProducts(res.data));
   }, []);
   return (
-    <main>
+    <main className="home-main">
       <div className="product-container">
         <h2>상품리스트</h2>
         <div className="product-items">

@@ -1,0 +1,21 @@
+.product-list-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+
+  padding: 24px 76px;
+  min-width: 1280px;
+}
+
+.filter-container {
+  display: flex;
+  gap: 36px;
+}
+
+.products-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}

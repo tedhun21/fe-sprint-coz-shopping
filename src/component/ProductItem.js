@@ -1,17 +1,20 @@
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 
 import "./ProductItem.css";
+import { mark } from "../reducers/markedDataReducer";
 
-const ProductItem = ({ product, setMarkedProducts }) => {
+const ProductItem = ({ product }) => {
   const [isMarked, setIsMarked] = useState(() => {
     const storedIsMarked = localStorage.getItem(`isMarked_${product.id}`);
     return storedIsMarked === "true";
   });
 
+  const dispatch = useDispatch();
   useEffect(() => {
     localStorage.setItem(`isMarked_${product.id}`, isMarked.toString());
     if (isMarked === true) {
-      setMarkedProducts((prev) => [...prev, { ...product, isMarked: true }]);
+      dispatch(mark({ ...product, isMarked: true }));
     }
   }, [isMarked, product.id]);
 
