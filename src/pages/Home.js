@@ -21,9 +21,8 @@ const Home = () => {
           ))}
         </div>
       </div>
-      <div>
+      <div className="bookmark-container">
         <h2>북마크 리스트</h2>
-        <ul></ul>
       </div>
     </main>
   );

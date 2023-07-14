@@ -1,19 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./ProductItem.css";
 
 const ProductItem = ({ product }) => {
-  const [isMarked, setIsMarked] = useState(false);
+  const [isMarked, setIsMarked] = useState(() => {
+    const storedIsMarked = localStorage.getItem(`isMarked_${product.id}`);
+    return storedIsMarked === "true";
+  });
+
+  useEffect(() => {
+    localStorage.setItem(`isMarked_${product.id}`, isMarked.toString());
+  }, [isMarked, product.id]);
 
   return (
-    <div>
+    <div className="item">
       <img
         className="product-img"
         src={product.image_url || product.brand_image_url}
       />
-      <img
-        src={isMarked ? "/images/on.png" : "/images/off.png"}
-        onClick={() => setIsMarked(!isMarked)}
-      />
+      <div className="bookmark-img">
+        <img
+          src={isMarked ? "/images/on.png" : "/images/off.png"}
+          onClick={() => setIsMarked((prevIsMarked) => !prevIsMarked)}
+        />
+      </div>
       <div className="product-label">
         <h3>
           {product.type === "Category"

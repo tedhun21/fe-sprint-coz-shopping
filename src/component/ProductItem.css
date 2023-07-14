@@ -28,3 +28,13 @@
 .purple {
   color: #452cdd;
 }
+
+.item {
+  position: relative;
+}
+
+.bookmark-img {
+  position: absolute;
+  left: 86%;
+  top: 67%;
+}
