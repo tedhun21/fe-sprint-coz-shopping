@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
+
 import "./ProductItem.css";
 
-const ProductItem = ({ product }) => {
+const ProductItem = ({ product, setMarkedProducts }) => {
   const [isMarked, setIsMarked] = useState(() => {
     const storedIsMarked = localStorage.getItem(`isMarked_${product.id}`);
     return storedIsMarked === "true";
@@ -9,7 +10,14 @@ const ProductItem = ({ product }) => {
 
   useEffect(() => {
     localStorage.setItem(`isMarked_${product.id}`, isMarked.toString());
+    if (isMarked === true) {
+      setMarkedProducts((prev) => [...prev, { ...product, isMarked: true }]);
+    }
   }, [isMarked, product.id]);
+
+  const markedHandler = () => {
+    setIsMarked((prev) => !prev);
+  };
 
   return (
     <div className="item">
@@ -20,7 +28,7 @@ const ProductItem = ({ product }) => {
       <div className="bookmark-img">
         <img
           src={isMarked ? "/images/on.png" : "/images/off.png"}
-          onClick={() => setIsMarked((prevIsMarked) => !prevIsMarked)}
+          onClick={markedHandler}
         />
       </div>
       <div className="product-label">

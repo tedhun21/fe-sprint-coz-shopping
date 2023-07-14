@@ -11,7 +11,7 @@ export const marketDataSlice = createSlice({
   initialState,
   reducers: {
     fetchStart: (state) => {
-      state.isLoading = false;
+      state.isLoading = true;
       state.error = null;
     },
     fetchSuccess: (state, action) => {
