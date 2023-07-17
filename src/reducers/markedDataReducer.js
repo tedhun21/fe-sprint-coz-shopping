@@ -11,9 +11,12 @@ export const markedDataSlice = createSlice({
     mark: (state, action) => {
       state.data = [...state.data, action.payload];
     },
+    unmark: (state, action) => {
+      state.data = [...state.data.filter((el) => el.id !== action.payload.id)];
+    },
   },
 });
 
-export const { mark } = markedDataSlice.actions;
+export const { mark, unmark } = markedDataSlice.actions;
 
 export default markedDataSlice.reducer;

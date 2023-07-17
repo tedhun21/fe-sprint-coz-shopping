@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
 import "./ProductItem.css";
-import { mark } from "../reducers/markedDataReducer";
+import { mark, unmark } from "../reducers/markedDataReducer";
 
 const ProductItem = ({ product }) => {
   const [isMarked, setIsMarked] = useState(() => {
@@ -13,10 +13,15 @@ const ProductItem = ({ product }) => {
   const dispatch = useDispatch();
   useEffect(() => {
     localStorage.setItem(`isMarked_${product.id}`, isMarked.toString());
+  }, [isMarked]);
+
+  useEffect(() => {
     if (isMarked === true) {
       dispatch(mark({ ...product, isMarked: true }));
+    } else if (isMarked === false) {
+      dispatch(unmark({ ...product, isMarked: false }));
     }
-  }, [isMarked, product.id]);
+  }, [isMarked]);
 
   const markedHandler = () => {
     setIsMarked((prev) => !prev);

@@ -1,7 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchStart, fetchSuccess } from "../reducers/marketDataReducer";
+import {
+  fetchFailure,
+  fetchStart,
+  fetchSuccess,
+} from "../reducers/marketDataReducer";
 import "./ProductsList.css";
 import FilterItem from "../component/FilterItem";
 import ProductItem from "../component/ProductItem";
@@ -14,9 +18,11 @@ const ProductsList = () => {
     { id: 4, label: "기획전", isClicked: false },
     { id: 5, label: "브랜드", isClicked: false },
   ]);
-  const products = useSelector((state) => state.marketData.data);
-
+  const { data: products, isLoading } = useSelector(
+    (state) => state.marketData,
+  );
   console.log(products);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -25,7 +31,8 @@ const ProductsList = () => {
       .get("http://cozshopping.codestates-seb.link/api/v1/products")
       .then((res) => {
         dispatch(fetchSuccess(res.data));
-      });
+      })
+      .catch((err) => fetchFailure(err.data));
   }, []);
 
   const handleFilterClick = (index) => {
@@ -52,9 +59,11 @@ const ProductsList = () => {
         ))}
       </div>
       <div className="products-list">
-        {products.map((product) => (
-          <ProductItem key={product.id} product={product} />
-        ))}
+        {isLoading || products === null
+          ? null
+          : products.map((product) => (
+              <ProductItem key={product.id} product={product} />
+            ))}
       </div>
     </main>
   );
