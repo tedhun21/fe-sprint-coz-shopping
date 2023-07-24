@@ -1,0 +1,18 @@
+.home-main {
+  display: flex;
+  flex-direction: column;
+
+  padding: 76px;
+  min-width: 1280px;
+  gap: 12px;
+}
+
+.product-container {
+}
+
+.product-items {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  padding: 12px;
+}

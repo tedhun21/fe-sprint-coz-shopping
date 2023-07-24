@@ -1,13 +1,14 @@
 import Header from "./component/Header";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
+
 import Home from "./pages/Home";
 import ProductsList from "./pages/ProductsList";
 import Bookmark from "./pages/Bookmark";
 
 function App() {
   return (
-    <section className="wrapper">
+    <div className="wrapper">
       <Header />
       <Routes>
         <Route>
@@ -16,7 +17,7 @@ function App() {
           <Route path="bookmark" element={<Bookmark />}></Route>
         </Route>
       </Routes>
-    </section>
+    </div>
   );
 }
 
